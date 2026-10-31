@@ -1,33 +1,34 @@
 var numeros = 100;
-var divisible = false;
+var resultado = document.getElementById("resultado");
 
-for(var i = 1; i <= 100; i++)
+for (var i = 1; i <= numeros; i++)
 {
-    if(esDivisible (i,3))
+    var fizz = esDivisible(i, 3);
+    var buzz = esDivisible(i, 5);
+    var texto = "";
+
+    if (fizz)
     {
-     document.write("Fizz");   
+        texto = texto + "Fizz";
     }
 
-    if(esDivisible(i,5))
+    if (buzz)
     {
-        document.write("Buzz");  
+        texto = texto + "Buzz";
     }
 
-    if(!esDivisible(i,3) && !esDivisible(i,5))
+    if (!fizz && !buzz)
     {
-        document.write(i);
+        texto = i;
     }
-    document.write("<br />");
-}  
+
+    // Se crea una linea nueva con el texto y se agrega a la pagina.
+    var linea = document.createElement("div");
+    linea.textContent = texto;
+    resultado.appendChild(linea);
+}
 
 function esDivisible(num, divisor)
 {
-    if(num % divisor == 0)
-    {
-       return true; 
-    }
-    else
-    {
-        return false;
-    }
+    return num % divisor == 0;
 }
